@@ -1410,6 +1410,9 @@ ol {
   margin-bottom: 10.5px;
 }
 ul ul,
+ul {
+  list-style-type: none;
+}
 ol ul,
 ul ol,
 ol ol {
