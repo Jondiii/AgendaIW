@@ -110,7 +110,7 @@
             </div>
 
             <div id="app1">
-            <li v-for="c in contactos">
+            <li v-for="(c, index) in contactos">
             <div class="row">
                 <div class="col-xs-4">
                     <p>{{ c.nombre }}</p>
@@ -122,7 +122,7 @@
                     <p>{{ c.telefono }}</p>
                 </div>
                 <div class="col-xs-4">
-                    <button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span></button>
+                    <button class="btn btn-danger btn-sm"  @click="deleteEvent(index)"><span class="glyphicon glyphicon-remove"></span></button>
                 </div>
             </div>
             </li>
@@ -146,29 +146,26 @@
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Nombre</label>
-                                <input v-model="newContacto.nombre" type="text" class="form-control" placeholder="Nombre" id="name">
-                                <p class="help-block text-danger"></p>
+                                <p class="help-block text-danger"><input v-model="newContacto.nombre" type="text" class="form-control" placeholder="Nombre" id="app1"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Email</label>
-                                <input v-model="newContacto.email" type="text" class="form-control" placeholder="Email" id="email">
-                                <p class="help-block text-danger"></p>
+                                <p class="help-block text-danger"><input v-model="newContacto.email" type="text" class="form-control" placeholder="Email" id="app1"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Teléfono</label>
-                                <input v-model="newContacto.telefono" type="text" class="form-control" placeholder="Número de teléfono" id="phone">
-                                <p class="help-block text-danger"></p>
+                                <p class="help-block text-danger"><input v-model="newContacto.telefono" type="text" class="form-control" placeholder="Número de teléfono" id="app1"></p>
                             </div>
                         </div>
                         <br>
                         <div id="success"></div>
                         <div class="row">
-                            <div class="form-group col-xs-12">
-                                <button v-on:click='contactos.push(newContacto)' class="btn btn-success btn-lg">Añadir</button>
+                            <div class="form-group col-xs-12" id="app1">
+                                <button @click='contactos.push(newContacto)' class="btn btn-success btn-lg">Añadir</button>
                             </div>
                         </div>
                     </form>
@@ -211,44 +208,47 @@
         </div>
     </footer>
 
-        <script type="text/javascript">
-            var app1 = new Vue({
-            el:'#app1',
-            data:{
-                    newContacto:{
-                        nombre:'',
-                        email:'',
-                        telefono:''
-                    },
-                    newNombre:'',
-                    newEmail:'',
-                    newTel:'',
-                
-                    contactos:[
-                    {
-                        nombre:'Luxanna Crownguard',
-                        email:'luxYesperanza@gmail.com',
-                        telefono:'54235432'
-                    },
-                    {
-                        nombre:'Reinhard Astrea',
-                        email:'soOp@gmail.com',
-                        telefono:'43214312'
-                    },
-                    {
-                        nombre:'Yuri Lowell',
-                        email:'lowyuri@gmail.com',
-                        telefono:'43214312'
-                    },
-                    {
-                        nombre:'Garfiel Tinsel',
-                        email:'garfielBigotitos@outlook.com',
-                        telefono:'98650355'
-                    }
-                    ]
+    <script type="text/javascript">
+        var app1 = new Vue({
+        el:'#app1',
+        data:{
+                newContacto:{
+                    nombre:'',
+                    email:'',
+                    telefono:''
+                },
+            
+                contactos:[
+                {
+                    nombre:'Luxanna Crownguard',
+                    email:'luxYesperanza@gmail.com',
+                    telefono:'54235432'
+                },
+                {
+                    nombre:'Reinhard Astrea',
+                    email:'soOp@gmail.com',
+                    telefono:'43214312'
+                },
+                {
+                    nombre:'Yuri Lowell',
+                    email:'lowyuri@gmail.com',
+                    telefono:'43214312'
+                },
+                {
+                    nombre:'Garfiel Tinsel',
+                    email:'garfielBigotitos@outlook.com',
+                    telefono:'98650355'
                 }
-            });
-        </script>
+                ]
+            },
+
+        methods:{
+            deleteEvent: function(index) {
+                this.contactos.splice(index, 1);
+            }
+        }
+        });
+    </script>
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-top page-scroll visible-xs visible-sm">
