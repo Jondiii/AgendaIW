@@ -164,8 +164,8 @@
                         <br>
                         <div id="success"></div>
                         <div class="row">
-                            <div class="form-group col-xs-12" id="app1">
-                                <button @click='contactos.push(newContacto)' class="btn btn-success btn-lg">Añadir</button>
+                            <div class="row" id="vueevent">
+                                <input type="button"  @click='addRow()' class="btn btn-success btn-lg">
                             </div>
                         </div>
                     </form>
@@ -247,6 +247,19 @@
                 this.contactos.splice(index, 1);
             }
         }
+        });
+        var vueevent = new Vue({
+            el:'#vueevent',
+            methods:{
+                addRow: function(){
+                    var name = $('#name').val();
+                    var phone = $('#phone').val();
+                    var email = $('#email').val();
+                    var newContactos = {nombre: name, email: email, telefono: phone }
+                    console.log(newContactos);
+                    app1.contactos.push(newContactos); 
+                },
+            },
         });
     </script>
 
