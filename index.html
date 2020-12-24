@@ -240,9 +240,10 @@
             methods:{
             deleteEvent: function(index) {
                 this.contactos.splice(index, 1);
-            }
+                }
             }
             });
+
             var vueevent = new Vue({
             el:'#vueevent',
             methods:{
@@ -250,9 +251,18 @@
                     var name = $('#name').val();
                     var phone = $('#phone').val();
                     var email = $('#email').val();
-                    var newContactos = {nombre: name, email: email, telefono: phone }
-                    console.log(newContactos);
-                    app1.contactos.push(newContactos); 
+
+                    if(name.localeCompare("")== 0 || phone.localeCompare("")== 0 || email.localeCompare("")== 0)
+                    {
+                        alert("Error, ningún campo puede estar vacío.")
+                    } 
+                    else {
+                        var newContactos = {nombre: name, email: email, telefono: phone }
+                        console.log(newContactos);
+                        app1.contactos.push(newContactos); 
+                    }
+
+
                 },
                 },
             });
