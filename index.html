@@ -146,27 +146,28 @@
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Nombre</label>
-                                <p class="help-block text-danger"><input v-model="newContacto.nombre" type="text" class="form-control" placeholder="Nombre" id="app1"></p>
+                                <input v-model="newContacto.nombre" type="text" class="form-control" placeholder="Nombre" id="name">
+                                <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Email</label>
-                                <p class="help-block text-danger"><input v-model="newContacto.email" type="text" class="form-control" placeholder="Email" id="app1"></p>
+                                <input v-model="newContacto.email" type="text" class="form-control" placeholder="Email" id="email">
+                                <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Teléfono</label>
-                                <p class="help-block text-danger"><input v-model="newContacto.telefono" type="text" class="form-control" placeholder="Número de teléfono" id="app1"></p>
+                                <input v-model="newContacto.telefono" type="text" class="form-control" placeholder="Número de teléfono" id="phone">
+                                <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <br>
                         <div id="success"></div>
-                        <div class="row">
-                            <div class="row" id="vueevent">
-                                <input type="button"  @click='addRow()' class="btn btn-success btn-lg">
-                            </div>
+                        <div class="row" id="vueevent">
+                            <input type="button"  @click='addRow()' class="btn btn-success btn-lg">
                         </div>
                     </form>
                 </div>
@@ -208,16 +209,10 @@
         </div>
     </footer>
 
-    <script type="text/javascript">
-        var app1 = new Vue({
-        el:'#app1',
-        data:{
-                newContacto:{
-                    nombre:'',
-                    email:'',
-                    telefono:''
-                },
-            
+        <script type="text/javascript">
+            var app1 = new Vue({
+            el:'#app1',
+            data:{
                 contactos:[
                 {
                     nombre:'Luxanna Crownguard',
@@ -242,13 +237,13 @@
                 ]
             },
 
-        methods:{
+            methods:{
             deleteEvent: function(index) {
                 this.contactos.splice(index, 1);
             }
-        }
-        });
-        var vueevent = new Vue({
+            }
+            });
+            var vueevent = new Vue({
             el:'#vueevent',
             methods:{
                 addRow: function(){
@@ -259,9 +254,9 @@
                     console.log(newContactos);
                     app1.contactos.push(newContactos); 
                 },
-            },
-        });
-    </script>
+                },
+            });
+        </script>
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-top page-scroll visible-xs visible-sm">
