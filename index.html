@@ -132,7 +132,7 @@
     </section>
 
     <!-- Añadir nuevo Section -->
-    <section id="app1">
+    <section id="vueevent">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -146,27 +146,27 @@
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Nombre</label>
-                                <input v-model="newContacto.nombre" type="text" class="form-control" placeholder="Nombre" id="name">
+                                <input v-model="newNombre" type="text" class="form-control" placeholder="Nombre" id="name">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Email</label>
-                                <input v-model="newContacto.email" type="text" class="form-control" placeholder="Email" id="email">
+                                <input v-model="newEmail" type="text" class="form-control" placeholder="Email" id="email">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Teléfono</label>
-                                <input v-model="newContacto.telefono" type="text" class="form-control" placeholder="Número de teléfono" id="phone">
+                                <input v-model="newTelefono" type="text" class="form-control" placeholder="Número de teléfono" id="phone">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <br>
                         <div id="success"></div>
-                        <div class="row" id="vueevent">
+                        <div class="row">
                             <button class="btn btn-danger btn-sm" type="button" @click='addRow()'>Añadir</button>
                         </div>
                     </form>
@@ -240,12 +240,19 @@
             methods:{
             deleteEvent: function(index) {
                 this.contactos.splice(index, 1);
-                }
-            }
+            },
+            addRow: function(){
+                this.contactos.push({nombre:vueevent.newNombre, email:vueevent.newEmail, telefono:vueevent.newTelefono});
+            },
+            },
             });
-
             var vueevent = new Vue({
             el:'#vueevent',
+            data:{
+                newNombre:'',
+                newEmail:'',
+                newTelefono:'',
+            },
             methods:{
                 addRow: function(){
                     var name = $('#name').val();
@@ -257,12 +264,8 @@
                         alert("Error, ningún campo puede estar vacío.")
                     } 
                     else {
-                        var newContactos = {nombre: name, email: email, telefono: phone }
-                        console.log(newContactos);
-                        app1.contactos.push(newContactos); 
+                        app1.addRow();
                     }
-
-
                 },
                 },
             });
