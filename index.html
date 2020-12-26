@@ -264,7 +264,13 @@
                         alert("Error, ningún campo puede estar vacío.")
                     } 
                     else {
-                        app1.addRow();
+                        if(!$.isNumeric(phone))
+                        {
+                            alert("Error, el teléfono tiene que ser numérico.")
+                        }
+                        else {
+                            app1.addRow();
+                        }
                     }
                 },
                 },
